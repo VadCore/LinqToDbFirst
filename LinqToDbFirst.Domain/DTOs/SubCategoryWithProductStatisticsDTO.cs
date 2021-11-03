@@ -8,10 +8,9 @@ using System.Collections.Generic;
 
 namespace LinqToDbFirst.Domain.DTOs
 {
-    public class ProductWithTotalQtyAndTotalCostDTO
+    public class SubCategoryWithProductStatisticsDTO
     {
-        public ProductDTO ProductDTO { get; init; }
-        public int TotalQty { get; init; }
-        public decimal TotalCost { get; init; }
+        public string Name { get; init; }
+        public IEnumerable<ProductSaleStatisticsDTO> ProductSaleStatisticsDTOs { get; init; }
     }
 }

@@ -12,7 +12,10 @@ namespace LinqToDbFirst.Application.Services.Interfaces
 
         //public Task GetAllProductsWithTotalQtyAndTotalCostGroupByCategory();
 
-        public void
-            GetAllProductsWithTotalQtyAndTotalCostGroupByCategory();
+        public Task<Dictionary<string, Dictionary<string, List<ProductSaleStatisticsDTO>>>> 
+            GetAllProductSaleStatisticsGroupByCategories();
+
+        public Task<IEnumerable<ParentCategoryWithProductStatisticsDTO>>
+            GetAllProductSaleStatisticsGroupByCategories3();
     }
 }

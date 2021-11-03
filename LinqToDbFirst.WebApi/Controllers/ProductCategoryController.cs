@@ -25,7 +25,7 @@ namespace LinqToDbFirst.WebApi.Controllers
         //}
 
         [HttpGet]
-        public ActionResult<IEnumerable<ParentCategoryWithCategoryWithProductsWithTotalQtyAndTotalCostDTO>>
+        public ActionResult<IEnumerable<ParentCategoryWithProductStatisticsDTO>>
             GetAllProductsWithTotalQtyAndTotalCostGroupByCategory()
         {
             return OkOrNotFound(_productCategoryService.GetAllProductsWithTotalQtyAndTotalCostGroupByCategory());

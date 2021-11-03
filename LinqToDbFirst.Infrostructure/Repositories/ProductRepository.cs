@@ -14,45 +14,21 @@ namespace LinqToDbFirst.Infrostructure.Repositories
 
         public ProductRepository(AdventureWorksLT2019Context context) : base(context){}
 
-        //public async Task<Customer> GetById(int id)
-        //{
-        //    return await entities.FindAsync(id);
-        //}
-
-        //public void Delete(int id)
-        //{
-        //    Customer entity = entities.Find(id);
-        //    if (entity != null)
-        //        entities.Remove(entity);
-        //}
-
-        //public async Task<IEnumerable<ParentCategoryWithCategoryWithProductsWithTotalQtyAndTotalCostDTO>>
-        //   GetAllProductsWithTotalQtyAndTotalCostGroupByCategory()
-        //{
-
-        //}
-
-        //public async Task<IDictionary<ProductCategoryDTO, IDictionary<ProductCategoryDTO, ProductWithTotalQtyAndTotalCostDTO>>> 
-        public IEnumerable<(Product Product, int TotalQty, decimal TotalCost)>
-            GetAllProductsWithTotalQtyAndTotalCostGroupByCategory()
+        public async Task<IDictionary<int, (int TotalQty, decimal TotalCost)>> GetAllProductSaleStatistics()
         {
-            return  entities.Include(p => p.ProductCategory)
-                                   .ThenInclude(pc => pc.ParentProductCategory)
-                                   .Select(p => new
-                                   {
-                                       Product = p,
+            var productSaleStatistics = await _context.Set<SalesOrderDetail>().Where(od => od.SalesOrder.Status == 5)
+                .GroupBy(od => od.ProductId, od => od)
+                .Select(g => new
+                {
+                    ProductId = g.Key,
+                    TotalQty = g.Sum(od => od.OrderQty),
+                    TotalCost = g.Sum(od => od.OrderQty * od.UnitPrice)
+                }).ToDictionaryAsync(d=> d.ProductId, v=> (v.TotalQty, v.TotalCost));
 
-                                       TotalQty = p.SalesOrderDetails.Where(od => od.SalesOrder.Status == 5)
-                                                .Select(od => (int)od.OrderQty).Sum(),
+            return productSaleStatistics;
 
-                                       TotalCost = p.SalesOrderDetails.Where(od => od.SalesOrder.Status == 5)
-                                                .Select(od => od.OrderQty * od.UnitPrice).Sum()
-                                       
-                                   }).AsEnumerable().Select(d => (Product: d.Product, Totalqty: d.TotalQty, TotalCost: d.TotalCost));
 
-            var stop = true;
-                
-                //.Include(p => p.SalesOrderDetails.Where(od => od.SalesOrder.Status == 5));
+            // TODO: вынести в репозиторий SalesOrderDetail использовать entities
         }
     }
 }

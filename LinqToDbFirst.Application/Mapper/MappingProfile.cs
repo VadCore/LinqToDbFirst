@@ -15,10 +15,6 @@ namespace LinqToDbFirst.Application.Mapper
         {
             CreateMap<Customer, CustomerDTO>();
             CreateMap<Product, ProductDTO>();
-
-            CreateMap<ProductCategory, CategoryWithProductsWithTotalQtyAndTotalCostDTO>()
-                .ForMember(dto => dto.ProductWithTotalQtyAndTotalCostDTO,
-                options => options.MapFrom(pc => pc.Products));
         }
 
         

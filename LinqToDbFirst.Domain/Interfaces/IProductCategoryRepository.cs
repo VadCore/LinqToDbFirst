@@ -12,7 +12,13 @@ namespace LinqToDbFirst.Domain.Interfaces
         //public IEnumerable<(Product Product, int TotalQty, decimal TotalCost)>
         //    GetAllProductsWithTotalQtyAndTotalCostGroupByCategory();
 
-        public IEnumerable<ParentCategoryWithCategoryWithProductsWithTotalQtyAndTotalCostDTO>
+        public IEnumerable<ParentCategoryWithProductStatisticsDTO>
             GetAllProductsWithTotalQtyAndTotalCostGroupByCategory();
+
+        public Task<Dictionary<string, Dictionary<string, List<Product>>>> GetCategoryTreeWithProducts2();
+
+        public Task<IEnumerable<ParentCategoryWithProductStatisticsDTO>> GetCategoryTreeWithProducts3();
+
+        public Task<IEnumerable<ProductCategory>> GetCategoryTreeWithProducts1();
     }
 }

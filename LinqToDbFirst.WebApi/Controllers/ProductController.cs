@@ -29,5 +29,19 @@ namespace LinqToDbFirst.WebApi.Controllers
         //{
         //    await _productService.GetAllProductsWithTotalQtyAndTotalCostGroupByCategory();
         //}
+
+        [HttpGet]
+        public async Task<ActionResult<Dictionary<string, Dictionary<string, List<ProductSaleStatisticsDTO>>>>>
+            GetAllProductSaleStatisticsGroupByCategories()
+        {
+            return OkOrNotFound(await _productService.GetAllProductSaleStatisticsGroupByCategories());
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<ParentCategoryWithProductStatisticsDTO>>>
+            GetAllProductSaleStatisticsGroupByCategories2()
+        {
+            return OkOrNotFound(await _productService.GetAllProductSaleStatisticsGroupByCategories3());
+        }
     }
 }

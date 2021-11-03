@@ -36,7 +36,7 @@ namespace LinqToDbFirst.Application.Services
             return _mapper.Map<IEnumerable<ProductCategory>, List<ProductCategoryDTO>>(productCategories);
         }
        
-        public IEnumerable<ParentCategoryWithCategoryWithProductsWithTotalQtyAndTotalCostDTO> 
+        public IEnumerable<ParentCategoryWithProductStatisticsDTO> 
             GetAllProductsWithTotalQtyAndTotalCostGroupByCategory()
         {
             return _productCategory.GetAllProductsWithTotalQtyAndTotalCostGroupByCategory();
