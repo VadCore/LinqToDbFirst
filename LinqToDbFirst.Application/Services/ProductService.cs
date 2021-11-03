@@ -27,6 +27,18 @@ namespace LinqToDbFirst.Application.Services
             return _mapper.Map<IEnumerable<Product>, List<ProductDTO>>(products);
         }
 
+        public void
+            GetAllProductsWithTotalQtyAndTotalCostGroupByCategory()
+        {
+            _products.GetAllProductsWithTotalQtyAndTotalCostGroupByCategory();
+        }
 
+        //public async Task<IDictionary<ProductCategoryDTO, IDictionary<ProductCategoryDTO, ProductWithTotalQtyAndTotalCostDTO>>>
+        //GetAllProductsWithTotalQtyAndTotalCostGroupByCategory()
+        //{
+        //    var products =  _products.GetAllProductsWithTotalQtyAndTotalCostGroupByCategory();
+
+        //    products
+        //}
     }
 }

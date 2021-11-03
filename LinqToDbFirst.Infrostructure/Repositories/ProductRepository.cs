@@ -32,17 +32,25 @@ namespace LinqToDbFirst.Infrostructure.Repositories
 
         //}
 
-        public async Task<IDictionary<ProductCategoryDTO, IDictionary<ProductCategoryDTO, ProductWithTotalQtyAndTotalCostDTO>>> 
+        //public async Task<IDictionary<ProductCategoryDTO, IDictionary<ProductCategoryDTO, ProductWithTotalQtyAndTotalCostDTO>>> 
+        public IEnumerable<(Product Product, int TotalQty, decimal TotalCost)>
             GetAllProductsWithTotalQtyAndTotalCostGroupByCategory()
         {
-            var products = entities.Include(p=> p.ProductCategory)
-                                   .ThenInclude(pc=> pc.ParentProductCategory)
-                                   .Select(p=> new ProductWithTotalQtyAndTotalCostDTO
-                                   { 
-                                        ProductDTO = p,
-                                        Cost = p.SalesOrderDetails.Where(od => od.SalesOrder.Status == 5)
-                                                .Select(od=> od.OrderQty, )
-                                   })
+            return  entities.Include(p => p.ProductCategory)
+                                   .ThenInclude(pc => pc.ParentProductCategory)
+                                   .Select(p => new
+                                   {
+                                       Product = p,
+
+                                       TotalQty = p.SalesOrderDetails.Where(od => od.SalesOrder.Status == 5)
+                                                .Select(od => (int)od.OrderQty).Sum(),
+
+                                       TotalCost = p.SalesOrderDetails.Where(od => od.SalesOrder.Status == 5)
+                                                .Select(od => od.OrderQty * od.UnitPrice).Sum()
+                                       
+                                   }).AsEnumerable().Select(d => (Product: d.Product, Totalqty: d.TotalQty, TotalCost: d.TotalCost));
+
+            var stop = true;
                 
                 //.Include(p => p.SalesOrderDetails.Where(od => od.SalesOrder.Status == 5));
         }

@@ -42,11 +42,14 @@ namespace LinqToDbFirst.WebApi
         {
             services.AddDbContext<AdventureWorksLT2019Context>(options => options.UseSqlServer(DbConnection));
 
+
             services.AddScoped<ICustomerRepository, CustomerRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IProductCategoryRepository, ProductCategoryRepository>();
 
             services.AddScoped<ICustomerService, CustomerService>();
             services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IProductCategoryService, ProductCategoryService>();
 
             services.AddAutoMapper(typeof(MappingProfile).Assembly);
 

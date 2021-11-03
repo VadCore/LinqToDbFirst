@@ -12,6 +12,6 @@ namespace LinqToDbFirst.Domain.DTOs
     {
         public ProductDTO ProductDTO { get; init; }
         public int TotalQty { get; init; }
-        public decimal Cost { get; init; }
+        public decimal TotalCost { get; init; }
     }
 }

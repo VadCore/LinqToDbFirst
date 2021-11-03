@@ -23,5 +23,11 @@ namespace LinqToDbFirst.WebApi.Controllers
         {
             return OkOrNotFound(await _productService.GetAllProducts());
         }
+
+        //[HttpGet]
+        //public async Task GetAllProductsWithTotalQtyAndTotalCostGroupByCategory()
+        //{
+        //    await _productService.GetAllProductsWithTotalQtyAndTotalCostGroupByCategory();
+        //}
     }
 }

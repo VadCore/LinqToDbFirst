@@ -8,6 +8,7 @@ namespace LinqToDbFirst.Domain.Interfaces
 {
     public interface IProductRepository : ISimplePrimaryKeyRepository<Product>
     {
-        
+        public IEnumerable<(Product Product, int TotalQty, decimal TotalCost)>
+            GetAllProductsWithTotalQtyAndTotalCostGroupByCategory();
     }
 }

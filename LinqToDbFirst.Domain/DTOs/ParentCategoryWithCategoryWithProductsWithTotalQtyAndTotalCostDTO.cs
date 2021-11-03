@@ -11,6 +11,8 @@ namespace LinqToDbFirst.Domain.DTOs
 {
     public class ParentCategoryWithCategoryWithProductsWithTotalQtyAndTotalCostDTO
     {
+        public ProductCategoryDTO ParentCategoryDTO { get; init; }
         public IEnumerable<CategoryWithProductsWithTotalQtyAndTotalCostDTO> CategoryWithProductsWithTotalQtyAndTotalCostDTO { get; init; }
+
     }
 }

@@ -9,5 +9,10 @@ namespace LinqToDbFirst.Application.Services.Interfaces
     public interface IProductService
     {
         public Task<IEnumerable<ProductDTO>> GetAllProducts();
+
+        //public Task GetAllProductsWithTotalQtyAndTotalCostGroupByCategory();
+
+        public void
+            GetAllProductsWithTotalQtyAndTotalCostGroupByCategory();
     }
 }
