@@ -9,9 +9,6 @@ namespace LinqToDbFirst.Domain.Interfaces
 {
     public interface IProductCategoryRepository : ISimplePrimaryKeyRepository<ProductCategory>
     {
-        //public IEnumerable<(Product Product, int TotalQty, decimal TotalCost)>
-        //    GetAllProductsWithTotalQtyAndTotalCostGroupByCategory();
-
         public IEnumerable<ParentCategoryWithProductStatisticsDTO>
             GetAllProductsWithTotalQtyAndTotalCostGroupByCategory();
 

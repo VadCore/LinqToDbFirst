@@ -19,11 +19,8 @@ namespace LinqToDbFirst.Application.Services
             _customers = customers;
         }
 
-
         public async Task<IEnumerable<CustomerDTO>> GetAllCustomers()
         {
-
-
             var customers = await _customers.GetAll();
 
             return _mapper.Map<IEnumerable<Customer>, List<CustomerDTO>>(customers);

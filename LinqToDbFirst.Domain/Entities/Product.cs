@@ -9,7 +9,6 @@ namespace LinqToDbFirst.Domain.Entities
 {
     public partial class Product : ISimplePrimaryKeyEntity
     {
-        
         public int ProductId { get; set; }
         public string Name { get; set; }
         public string ProductNumber { get; set; }

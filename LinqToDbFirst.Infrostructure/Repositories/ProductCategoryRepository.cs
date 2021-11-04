@@ -40,7 +40,6 @@ namespace LinqToDbFirst.Infrostructure.Repositories
             return result;
         }
 
-
         public async Task<IEnumerable<ParentCategoryWithProductStatisticsDTO>> GetCategoryTreeWithProducts3()
         {
             var result = await entities.Where(pc => pc.ParentProductCategoryId == null).Select(pc =>
@@ -69,12 +68,8 @@ namespace LinqToDbFirst.Infrostructure.Repositories
         }
 
 
-        
-
-
-
         public IEnumerable<ParentCategoryWithProductStatisticsDTO>
-            GetAllProductsWithTotalQtyAndTotalCostGroupByCategory() // one query groupById
+            GetAllProductsWithTotalQtyAndTotalCostGroupByCategory() // Here try get by one query groupById
         {
 
             var result = entities.Where(pc => pc.ParentProductCategoryId == null).Select(pc =>
@@ -106,16 +101,16 @@ namespace LinqToDbFirst.Infrostructure.Repositories
                                     //    {
                                     //        TotalQty = g.Sum(od=> od.OrderQty), 
                                     //        TotalCost = g.Sum(od => od.OrderQty * od.UnitPrice) 
-                                    //    }), // GroupBy dont work correctly in EF Core 5
+                                    //    }), 
+                                    // GroupBy dont work correctly in EF Core 5
                                     // https://docs.microsoft.com/en-us/ef/core/what-is-new/ef-core-5.0/breaking-changes#collection-distinct-groupby
                                 })
                         })
                 });
 
-            var sql = result.ToQueryString(); // 2 times one query
+            var sql = result.ToQueryString(); // 2 times one query OrderQty, no so good
 
             return result.ToList();
-            //return null;
         }
     }
 }

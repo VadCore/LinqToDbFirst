@@ -24,22 +24,20 @@ namespace LinqToDbFirst.WebApi.Controllers
             return OkOrNotFound(await _productService.GetAllProducts());
         }
 
-        //[HttpGet]
-        //public async Task GetAllProductsWithTotalQtyAndTotalCostGroupByCategory()
-        //{
-        //    await _productService.GetAllProductsWithTotalQtyAndTotalCostGroupByCategory();
-        //}
-
-        //[HttpGet]
-        //public async Task<ActionResult<Dictionary<string, Dictionary<string, List<ProductSaleStatisticsDTO>>>>>
-        //    GetAllProductSaleStatisticsGroupByCategories()
-        //{
-        //    return OkOrNotFound(await _productService.GetAllProductSaleStatisticsGroupByCategories());
-        //}
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<ParentCategoryWithProductStatisticsDTO>>> GetAllProductSaleStatisticsGroupByCategoriesFirst()
+        {
+            return OkOrNotFound(await _productService.GetAllProductSaleStatisticsGroupByCategories1());
+        }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ParentCategoryWithProductStatisticsDTO>>>
-            GetAllProductSaleStatisticsGroupByCategories2()
+        public async Task<ActionResult<IEnumerable<ParentCategoryWithProductStatisticsDTO>>> GetAllProductSaleStatisticsGroupByCategoriesSecond()
+        {
+            return OkOrNotFound(await _productService.GetAllProductSaleStatisticsGroupByCategories2());
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<ParentCategoryWithProductStatisticsDTO>>> GetAllProductSaleStatisticsGroupByCategoriesThird()
         {
             return OkOrNotFound(await _productService.GetAllProductSaleStatisticsGroupByCategories3());
         }

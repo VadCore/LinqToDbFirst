@@ -10,7 +10,6 @@ namespace LinqToDbFirst.Domain.DTOs
 {
     public class ProductDTO
     {
-
         public int ProductId { get; init; }
         public string Name { get; init; }
         public string ProductNumber { get; init; }

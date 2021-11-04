@@ -10,10 +10,11 @@ namespace LinqToDbFirst.Application.Services.Interfaces
     {
         public Task<IEnumerable<ProductDTO>> GetAllProducts();
 
-        //public Task GetAllProductsWithTotalQtyAndTotalCostGroupByCategory();
+        public Task<Dictionary<string, Dictionary<string, List<ProductSaleStatisticsDTO>>>> 
+            GetAllProductSaleStatisticsGroupByCategories();
 
-        //public Task<Dictionary<string, Dictionary<string, List<ProductSaleStatisticsDTO>>>> 
-        //    GetAllProductSaleStatisticsGroupByCategories();
+        public Task<IEnumerable<ParentCategoryWithProductStatisticsDTO>> 
+            GetAllProductSaleStatisticsGroupByCategories1();
 
 
         public Task<IEnumerable<ParentCategoryWithProductStatisticsDTO>>

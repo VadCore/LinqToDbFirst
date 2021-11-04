@@ -11,8 +11,7 @@ namespace LinqToDbFirst.Infrostructure.Repositories
     public abstract class SimplePrimaryKeyRepository<T> : Repository<T>, ISimplePrimaryKeyRepository<T> where T : class, ISimplePrimaryKeyEntity
     {
 
-        public SimplePrimaryKeyRepository(AdventureWorksLT2019Context context)
-            : base(context) { }
+        public SimplePrimaryKeyRepository(AdventureWorksLT2019Context context): base(context) { }
 
         public async Task<T> GetById(int id)
         {

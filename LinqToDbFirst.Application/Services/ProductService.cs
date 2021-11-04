@@ -32,30 +32,30 @@ namespace LinqToDbFirst.Application.Services
 
 
 
-        //public async Task<Dictionary<string, Dictionary<string, List<ProductSaleStatisticsDTO>>>> 
-        //    GetAllProductSaleStatisticsGroupByCategories()
-        //{
-        //    var productSaleStatistics = await _products.GetAllProductSaleStatistics();
+        public async Task<Dictionary<string, Dictionary<string, List<ProductSaleStatisticsDTO>>>>
+            GetAllProductSaleStatisticsGroupByCategories()
+        {
+            var productSaleStatistics = await _products.GetAllProductSaleStatistics();
 
-        //    var categoryTree = await _productCategories.GetCategoryTreeWithProducts2();
+            var categoryTree = await _productCategories.GetCategoryTreeWithProducts2();
 
-        //    var result = categoryTree
-        //        .ToDictionary(pc => pc.Key, pc => pc.Value
-        //             .ToDictionary(sc => sc.Key, sc => sc.Value
-        //                 .Select(p => new ProductSaleStatisticsDTO
-        //                 {
-        //                     Name = p.Name,
-        //                     Color = p.Color,
-        //                     ProductNumber = p.ProductNumber,
-        //                     Size = p.Size,
-        //                     Weight = p.Weight,
-        //                     TotalQty = productSaleStatistics.TryGetValue(p.ProductId, out (int TotalQty, decimal TotalCost) statistics)
-        //                                ? statistics.TotalQty : 0,
-        //                     TotalCost = statistics.TotalCost,
-        //                 }).ToList()));
+            var result = categoryTree
+                .ToDictionary(pc => pc.Key, pc => pc.Value
+                     .ToDictionary(sc => sc.Key, sc => sc.Value
+                         .Select(p => new ProductSaleStatisticsDTO
+                         {
+                             Name = p.Name,
+                             Color = p.Color,
+                             ProductNumber = p.ProductNumber,
+                             Size = p.Size,
+                             Weight = p.Weight,
+                             TotalQty = productSaleStatistics.TryGetValue(p.ProductId, out (int TotalQty, decimal TotalCost) statistics)
+                                        ? statistics.TotalQty : 0,
+                             TotalCost = statistics.TotalCost,
+                         }).ToList()));
 
-        //    return result;
-        //}
+            return result;
+        }
 
 
         public async Task<IEnumerable<ParentCategoryWithProductStatisticsDTO>> GetAllProductSaleStatisticsGroupByCategories1()

@@ -13,6 +13,5 @@ namespace LinqToDbFirst.Domain.DTOs
     {
         public string Name { get; init; }
         public IEnumerable<SubCategoryWithProductStatisticsDTO> SubCategoryWithProductStatisticsDTOs { get; init; }
-
     }
 }
