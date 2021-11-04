@@ -20,7 +20,7 @@ namespace LinqToDbFirst.Application.Services
         }
 
 
-        public async Task<IEnumerable<ProductCategoryDTO>> GetAllProductCategorys()
+        public async Task<IEnumerable<ProductCategoryDTO>> GetAllProductCategories()
         {
 
 

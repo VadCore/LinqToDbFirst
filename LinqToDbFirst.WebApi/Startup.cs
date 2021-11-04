@@ -19,6 +19,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.Extensions.Options;
 
 namespace LinqToDbFirst.WebApi
 {
@@ -31,17 +32,10 @@ namespace LinqToDbFirst.WebApi
             Configuration = configuration;
         }
 
-        //public static string DbConnection =
-        //    "Server=KOROBKOV-V;Database=AdventureWorksLT2019;Trusted_Connection=True;MultipleActiveResultSets=true";
-
-        public static string DbConnection =
-            "Server=ASXSTATION\\MSSQLDEVEDIT;Database=AdventureWorksLT2019;Trusted_Connection=True;MultipleActiveResultSets=true";
-
-
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<AdventureWorksLT2019Context>(options => options.UseSqlServer(DbConnection));
-
+            services.AddDbContext<AdventureWorksLT2019Context>(options => options.UseSqlServer(Configuration.GetConnectionString("OfficeLocalLinqDb")));
+            //services.AddDbContext<AdventureWorksLT2019Context>(options => options.UseSqlServer(Configuration.GetConnectionString("HomeLocalLinqDb")));
 
             services.AddScoped<ICustomerRepository, CustomerRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();

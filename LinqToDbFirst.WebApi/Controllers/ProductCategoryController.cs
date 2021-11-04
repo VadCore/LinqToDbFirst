@@ -18,11 +18,11 @@ namespace LinqToDbFirst.WebApi.Controllers
             _productCategoryService = productCategoryService;
         }
 
-        //[HttpGet]
-        //public async Task<ActionResult<IEnumerable<ProductDTO>>> GetAllProducts()
-        //{
-        //    return OkOrNotFound(await _productCategoryService.GetAllProducts());
-        //}
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<ProductDTO>>> GetAllProductCategories()
+        {
+            return OkOrNotFound(await _productCategoryService.GetAllProductCategories());
+        }
 
         [HttpGet]
         public ActionResult<IEnumerable<ParentCategoryWithProductStatisticsDTO>>

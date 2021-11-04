@@ -15,8 +15,7 @@ namespace LinqToDbFirst.Application.Mapper
         {
             CreateMap<Customer, CustomerDTO>();
             CreateMap<Product, ProductDTO>();
+            CreateMap<ProductCategory, ProductCategoryDTO>();
         }
-
-        
     }
 }
